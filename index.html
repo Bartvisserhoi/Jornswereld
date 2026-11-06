@@ -3087,7 +3087,7 @@ const imgOk = im => im.complete && im.naturalWidth > 0;
 
 /* Spelregels en puntentabellen (configuratie) */
 const L3CFG = {
-  phone: { limit:150, callCooldown:10, firstCall:15, wrongCooldown:2,
+  phone: { limit:150, callCooldown:20, firstCall:20, wrongCooldown:2,
     tiers:[[30,11],[40,10],[60,8],[120,5],[150,2]] },
   penalty: { kicks:5, zones:6, keepDirs:3,
     points:{win3:10, win2:8, win1:7, bonusHit:7, bonusMiss:5, lose:{1:5,2:4,3:3,4:2,5:1}} },
@@ -3219,7 +3219,7 @@ const L3_INTROS = {
     lead:"Jorn is zijn telefoon kwijtgeraakt bij CSV'28. Iedereen heeft al gezocht. Zelfs mama moest eraan te pas komen. Kun jij hem terugvinden voordat de tijd om is?",
     rules:["Tik op een gebied om in te zoomen: eerst het complex, dan een deel, dan de verstopplek.",
       "Verkeerd gegokt? Dan moet je 2 seconden wachten voor je weer mag zoeken.",
-      "Na 15 seconden mag je Jorns telefoon bellen, daarna elke 10 seconden: wat oplicht, daar moet je zijn. Let op, het kan alleen oplichten als je het daadwerkelijk zien kan.",
+      "Na 20 seconden mag je Jorns telefoon bellen, daarna elke 20 seconden: wat oplicht, daar moet je zijn. Let op, het kan alleen oplichten als je het daadwerkelijk zien kan.",
       "Na 2,5 minuut is het voorbij."],
     table:[["Binnen 30 seconden","11"],["Binnen 40 seconden","10"],["Binnen 1 minuut","8"],["Binnen 2 minuten","5"],["Binnen 2,5 minuut","2"],["Niet gevonden","0"]],
     btn:"START ZOEKEN", start:()=>startPhone()},
