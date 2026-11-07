@@ -1055,6 +1055,9 @@ function drawMap(){
   // kompas
   s += `<g transform="translate(560 40)"><circle r="22" fill="#fff" opacity=".9" stroke="#1b2a36" stroke-width="2"/><path d="M0 -16 L6 2 L0 -2 L-6 2Z" fill="#e0213f" transform="rotate(-60)"/><text y="16" text-anchor="middle" font-family="Lilita One" font-size="11" fill="#1b2a36">N</text></g>`;
   const svg = $("#map"); svg.innerHTML = s;
+  // Stadshagen bevat veel meer bomen dan Wilsum. Laat slechts elke derde
+  // boomkruin bewegen: dezelfde tekening, veel minder SVG-hertekenwerk.
+  svg.querySelectorAll(".sway").forEach((tree,i)=>{ if(i%3 !== 0) tree.classList.remove("sway"); });
   // pins altijd bovenop
   svg.querySelectorAll(".hot").forEach(h=>{ svg.appendChild(h);
     const go = () => openGame(h.dataset.hot);
