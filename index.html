@@ -770,25 +770,29 @@ function car(x,y,col,dir="x"){
   return s;
 }
 function mpv(x,y,col){
-  const L=3.15, Wd=1.3, zb=.2, zt=.74; let s="";
+  // Citroën Grand C4 Picasso: langere, hoge MPV met panoramische ruit, behoud grijs.
+  const L=3.48, Wd=1.34, zb=.2, zt=.77; let s="";
   const dk = shade(col,.5), F = x+L, yc = y+Wd/2;
   s += poly([[x+.2,y+.1,0],[x+L+.6,y+.1,0],[x+L+.7,y+Wd+.38,0],[x+.3,y+Wd+.38,0]], "#1d3a1a", 'opacity=".28"');
   s += box(x,y,zb,L,Wd,zt-zb,{base:col, side:shade(col,.68), top:shade(col,1.12), stroke:dk, sw:.8});
   // zwarte onderrand + wielkasten
   s += poly([[x,y+Wd,zb],[F,y+Wd,zb],[F,y+Wd,zb+.1],[x,y+Wd,zb+.1]], "#1b1e21");
   // cabine: lange zijruiten, chromen raamlijst
-  const zr = 1.36, xr = 2.2;
+  const zr = 1.52, xr = 2.43;
   s += poly([[x+.12,y+Wd-.05,zt],[x+xr,y+Wd-.05,zt],[x+xr,y+Wd-.05,zr],[x+.18,y+Wd-.05,zr]], col, `stroke="${dk}" stroke-width=".8"`);
   s += poly([[x+.22,y+Wd-.05,zt+.06],[x+xr-.06,y+Wd-.05,zt+.06],[x+xr-.06,y+Wd-.05,zr-.07],[x+.26,y+Wd-.05,zr-.07]], "url(#glassF)");
-  for(const xx of [.82,1.5]) s += poly([[x+xx,y+Wd-.05,zt],[x+xx+.09,y+Wd-.05,zt],[x+xx+.09,y+Wd-.05,zr],[x+xx,y+Wd-.05,zr]], "#1b1e21");
+  for(const xx of [.92,1.78]) s += poly([[x+xx,y+Wd-.05,zt],[x+xx+.09,y+Wd-.05,zt],[x+xx+.09,y+Wd-.05,zr],[x+xx,y+Wd-.05,zr]], "#1b1e21");
   s += poly([[x+.24,y+Wd-.05,zr-.08],[x+xr-.04,y+Wd-.05,zr-.08],[x+xr+.25,y+Wd-.05,zt+.08],[x+xr+.2,y+Wd-.05,zt+.02],[x+xr-.08,y+Wd-.05,zr-.13],[x+.24,y+Wd-.05,zr-.13]], "#e3e7ea");
   // panoramische voorruit tot ver in het dak
   s += poly([[x+xr,y+.05,zt],[x+xr,y+Wd-.05,zt],[F-.05,y+Wd-.05,zt],[F-.05,y+.05,zt]], shade(col,1.15));
-  s += poly([[x+1.55,y+.08,zr],[x+1.55,y+Wd-.08,zr],[x+xr+.75,y+Wd-.08,zt+.02],[x+xr+.75,y+.08,zt+.02]], "url(#glassF)", `stroke="${dk}" stroke-width=".8"`);
-  s += poly([[x+.12,y+.05,zr],[x+1.55,y+.05,zr],[x+1.55,y+Wd-.05,zr],[x+.12,y+Wd-.05,zr]], shade(col,1.18), `stroke="${dk}" stroke-width=".8"`);
+  s += poly([[x+1.80,y+.08,zr],[x+1.80,y+Wd-.08,zr],[x+xr+.75,y+Wd-.08,zt+.02],[x+xr+.75,y+.08,zt+.02]], "url(#glassF)", `stroke="${dk}" stroke-width=".8"`);
+  s += poly([[x+.12,y+.05,zr],[x+1.80,y+.05,zr],[x+1.80,y+Wd-.05,zr],[x+.12,y+Wd-.05,zr]], shade(col,1.18), `stroke="${dk}" stroke-width=".8"`);
   s += poly([[x+.25,y+.18,zr+.01],[x+1.45,y+.18,zr+.01],[x+1.45,y+.27,zr+.01],[x+.25,y+.27,zr+.01]], "#cfd4d8");
   s += poly([[x+.25,y+Wd-.27,zr+.01],[x+1.45,y+Wd-.27,zr+.01],[x+1.45,y+Wd-.18,zr+.01],[x+.25,y+Wd-.18,zr+.01]], "#cfd4d8");
   s += box(x+xr+.05,y+Wd,zt+.02,.22,.14,.12,{base:"#1b1e21"});
+  // Hoge panoramische voorruit en extra achterste zijruit van de zevenzits Picasso.
+  s += poly([[x+.12,y+Wd+.012,zt+.10],[x+.76,y+Wd+.012,zt+.10],[x+.76,y+Wd+.012,zr-.08],[x+.20,y+Wd+.012,zr-.08]], "url(#glassF)", `stroke="${dk}" stroke-width=".7"`);
+  s += poly([[x+1.84,y+Wd+.013,zt+.12],[x+2.36,y+Wd+.013,zt+.12],[x+2.36,y+Wd+.013,zr-.12],[x+1.84,y+Wd+.013,zr-.12]], "url(#glassF)", `stroke="${dk}" stroke-width=".7"`);
   // voorkant: dubbele chevron + chromen vleugels naar LED-lijnen
   s += poly([[F,y+.28,zb+.04],[F,y+Wd-.28,zb+.04],[F,y+Wd-.38,zb+.2],[F,y+.38,zb+.2]], "#1b1e21");
   s += poly([[F,y+.08,zb+.29],[F,y+.34,zb+.29],[F,y+.38,zb+.38],[F,y+.08,zb+.38]], "#eef6ff");
