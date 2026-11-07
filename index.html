@@ -2686,7 +2686,8 @@ function moveToward(m, tx, ty, vmax, dt){
   m.vx = (nx-m.x)/Math.max(dt,1e-4); m.vy = (ny-m.y)/Math.max(dt,1e-4); m.x = nx; m.y = ny;
 }
 function collide(pk, m){
-  const R = 20+34, dx = pk.x-m.x, dy = pk.y-m.y, d = Math.hypot(dx,dy);
+  // De speler krijgt een iets ruimere botsingszone; Abbey en de puck blijven gelijk.
+  const R = 20+34+(m === HK.pl ? 8 : 0), dx = pk.x-m.x, dy = pk.y-m.y, d = Math.hypot(dx,dy);
   if(d < R && d > 0){
     const nx = dx/d, ny = dy/d;
     pk.x = m.x + nx*R; pk.y = m.y + ny*R;
@@ -2751,7 +2752,7 @@ function tickHockey(dt){
     // nooit door de rand heen duwen; zit de scrunchie klem, dan schiet hij los richting het midden
     { const inG = pk.x > 300-T.gw/2 && pk.x < 300+T.gw/2;
       pk.x = Math.max(T.l+20, Math.min(T.r-20, pk.x)); if(!inG) pk.y = Math.max(T.t+20, Math.min(T.b-20, pk.y));
-      for(const m of [ai, H_.pl]){ if(Math.hypot(pk.x-m.x, pk.y-m.y) < 50){
+      for(const m of [ai, H_.pl]){ if(Math.hypot(pk.x-m.x, pk.y-m.y) < (m === H_.pl ? 58 : 50)){
         const dx = 300-pk.x, dy = 515-pk.y, d = Math.hypot(dx,dy)||1; pk.vx = dx/d*520; pk.vy = dy/d*520;
         if(m === ai){ H_.wander = .6; H_.wt = {x:300, y:T.t+40}; } } } }
   }
